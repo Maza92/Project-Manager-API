@@ -14,9 +14,9 @@
 
 ```
 {
-"username": "username",
-"password": "password",
-"email": "email@example.com"
+  "username": "username",
+  "password": "password",
+  "email": "email@example.com"
 }
 ```
 
@@ -24,18 +24,18 @@
 
 ```
 {
-"id": 2,
-"email": "email@example.com",
-"password": "encodePass",
-"username": "username",
-"role": "role",
-"createAt": "date",
-"updateAt": "date",
-"authorities": [],
-"accountNonExpired": boolean,
-"accountNonLocked": boolean,
-"credentialsNonExpired": boolean,
-"enabled": boolean
+  "id": 2,
+  "email": "email@example.com",
+  "password": "encodePass",
+  "username": "username",
+  "role": "role",
+  "createAt": "date",
+  "updateAt": "date",
+  "authorities": [],
+  "accountNonExpired": boolean,
+  "accountNonLocked": boolean,
+  "credentialsNonExpired": boolean,
+  "enabled": boolean
 }
 ```
 
@@ -45,8 +45,8 @@
 
 ```
 {
-"email": "email@example.com",
-"password": "password"
+  "email": "email@example.com",
+  "password": "password"
 }
 ```
 
@@ -54,7 +54,7 @@
 
 ```
 {
-"token": "jwtToken",
-"expire": expireMils
+  "token": "jwtToken",
+  "expire": expireMils
 }
 ```
