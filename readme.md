@@ -11,16 +11,18 @@
 ## Registration Flow
 
 **Request Body**
-<code>
+
+```
 {
 "username": "username",
 "password": "password",
 "email": "email@example.com"
 }
-</code>
+```
 
 **Response Body**
-<code>
+
+```
 {
 "id": 2,
 "email": "email@example.com",
@@ -35,23 +37,24 @@
 "credentialsNonExpired": boolean,
 "enabled": boolean
 }
-
-</code>
+```
 
 ## Login Flow
 
 **Request Body**
-<code>
+
+```
 {
 "email": "email@example.com",
 "password": "password"
 }
-</code>
+```
 
 **Response Body**
-<code>
+
+```
 {
 "token": "jwtToken",
 "expire": expireMils
 }
-</code>
+```
