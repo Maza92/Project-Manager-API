@@ -30,34 +30,36 @@ public class SecurityConfig {
 
   private final AuthenticationProvider authenticationProvider;
   private final AuthenticationFilter authenticationFilter;
+
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
     return httpSecurity
-            .csrf()
-            .disable()
-            .authorizeHttpRequests()
-            .requestMatchers("/api/auth/**", "api/health")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-            .authenticationProvider(authenticationProvider)
-            .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class)
-            .build();
+        .csrf()
+        .disable()
+        .authorizeHttpRequests()
+        .requestMatchers("/api/auth/**", "api/health")
+        .permitAll()
+        .anyRequest()
+        .authenticated()
+        .and()
+        .sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+        .authenticationProvider(authenticationProvider)
+        .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class)
+        .build();
   }
 
   @Bean
   CorsConfigurationSource corsConfiguration() {
-      CorsConfiguration configuration = new CorsConfiguration();
-      configuration.setAllowedOrigins(List.of("*"));
-      configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-      configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+    System.out.println("Cors asdf");
+    CorsConfiguration configuration = new CorsConfiguration();
+    configuration.setAllowedOrigins(List.of("*"));
+    configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+    configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
 
-      UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-      source.registerCorsConfiguration("/**", configuration);
-      return source;
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/", configuration);
+    return source;
   }
 }
