@@ -21,7 +21,7 @@ public class LoginController {
     private final JwtService jwtService;
     private final AuthService authService;
 
-    @RequestMapping("/singin")
+    @RequestMapping("/sign_in")
     @PostMapping
     public ResponseEntity<Response> login(@RequestBody UserLoginDto loginDto) {
         User authUser = authService.authenticate(loginDto);
@@ -35,7 +35,7 @@ public class LoginController {
         return ResponseEntity.ok(response);
     }
 
-    @RequestMapping("/singup")
+    @RequestMapping("/sign_up")
     @PostMapping
     public ResponseEntity<User> register(@RequestBody UserRegisterDto userRegisterDto) {
         User registerUser = authService.registerUser(userRegisterDto);

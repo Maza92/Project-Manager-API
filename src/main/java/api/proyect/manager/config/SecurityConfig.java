@@ -55,7 +55,7 @@ public class SecurityConfig {
     System.out.println("Cors asdf");
     CorsConfiguration configuration = new CorsConfiguration();
     configuration.setAllowedOrigins(List.of("*"));
-    configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+    configuration.setAllowedMethods(List.of("GET", "POST"));
     configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
 
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
