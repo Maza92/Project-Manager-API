@@ -4,8 +4,8 @@
 
 | Método | Endpoint         | Descripción    |
 | ------ | ---------------- | -------------- |
-| POST   | /api/auth/singin | User auth.     |
-| POST   | /api/auth/singup | User register. |
+| POST   | /api/auth/sign_in| User auth.     |
+| POST   | /api/auth/sign_up| User register. |
 | GET    | /api/health      | API status     |
 
 ## Registration Flow
