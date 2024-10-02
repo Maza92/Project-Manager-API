@@ -1,6 +1,6 @@
 package api.proyect.manager.config;
 
-import api.proyect.manager.repositories.UserRepository;
+import api.proyect.manager.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

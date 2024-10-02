@@ -1,4 +1,4 @@
-package api.proyect.manager.models;
+package api.proyect.manager.model;
 
 import lombok.*;
 

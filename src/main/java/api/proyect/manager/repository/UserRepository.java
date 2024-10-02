@@ -1,6 +1,6 @@
-package api.proyect.manager.repositories;
+package api.proyect.manager.repository;
 
-import api.proyect.manager.models.user.User;
+import api.proyect.manager.model.user.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

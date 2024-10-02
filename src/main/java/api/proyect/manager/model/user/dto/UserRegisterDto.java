@@ -1,4 +1,4 @@
-package api.proyect.manager.models.user;
+package api.proyect.manager.model.user.dto;
 
 import lombok.Data;
 

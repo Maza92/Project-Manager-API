@@ -1,11 +1,11 @@
-package api.proyect.manager.controllers;
+package api.proyect.manager.controller;
 
-import api.proyect.manager.models.user.Response;
-import api.proyect.manager.models.user.User;
-import api.proyect.manager.models.user.UserLoginDto;
-import api.proyect.manager.models.user.UserRegisterDto;
-import api.proyect.manager.services.AuthService;
-import api.proyect.manager.services.JwtService;
+import api.proyect.manager.model.TokenResponse;
+import api.proyect.manager.model.user.User;
+import api.proyect.manager.model.user.dto.UserLoginDto;
+import api.proyect.manager.model.user.dto.UserRegisterDto;
+import api.proyect.manager.service.AuthService;
+import api.proyect.manager.service.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,14 +21,14 @@ public class LoginController {
     private final JwtService jwtService;
     private final AuthService authService;
 
-    @RequestMapping("/sign_in")
+    @RequestMapping("/sign-in")
     @PostMapping
-    public ResponseEntity<Response> login(@RequestBody UserLoginDto loginDto) {
+    public ResponseEntity<TokenResponse> login(@RequestBody UserLoginDto loginDto) {
         User authUser = authService.authenticate(loginDto);
 
         String token = jwtService.generateToken(authUser);
 
-        Response response = new Response();
+        TokenResponse response = new TokenResponse();
         response.setToken(token);
         response.setExpire(jwtService.getExpiration());
 
@@ -42,7 +42,4 @@ public class LoginController {
         return ResponseEntity.ok(registerUser);
     }
 
-    @RequestMapping("/logout")
-    public void logout() {
-    }
 }

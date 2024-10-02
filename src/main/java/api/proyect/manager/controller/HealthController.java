@@ -1,4 +1,4 @@
-package api.proyect.manager.controllers;
+package api.proyect.manager.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

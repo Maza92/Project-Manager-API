@@ -1,6 +1,5 @@
-package api.proyect.manager.services;
+package api.proyect.manager.service;
 
-import api.proyect.manager.models.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -11,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import java.security.Key;
 
-import java.awt.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;

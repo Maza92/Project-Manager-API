@@ -1,4 +1,4 @@
-package api.proyect.manager.models.enums;
+package api.proyect.manager.model.enums;
 
 public enum RoleName {
     USER,

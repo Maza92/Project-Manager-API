@@ -1,6 +1,6 @@
-package api.proyect.manager.repositories;
+package api.proyect.manager.repository;
 
-import api.proyect.manager.models.Role;
+import api.proyect.manager.model.role.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

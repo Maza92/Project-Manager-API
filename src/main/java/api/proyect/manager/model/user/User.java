@@ -1,7 +1,6 @@
-package api.proyect.manager.models.user;
+package api.proyect.manager.model.user;
 
-import api.proyect.manager.models.Role;
-import api.proyect.manager.models.enums.RoleName;
+import api.proyect.manager.model.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,9 +10,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
 
-@Getter
-@Setter
+@Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "\"user\"")
 public class User implements UserDetails {
@@ -31,13 +31,9 @@ public class User implements UserDetails {
   @Column(nullable = false)
   private String username;
 
-  @ManyToMany
-  @JoinTable(
-          name = "usuario_roles",
-          joinColumns = @JoinColumn(name = "usuario_id"),
-          inverseJoinColumns = @JoinColumn(name = "role_id")
-  )
-  private Set<Role> roles;
+  @OneToOne
+  @Column(nullable = false)
+  private Role role;
 
   @CreationTimestamp
   private Date createAt;

@@ -1,6 +1,6 @@
-package api.proyect.manager.controllers;
+package api.proyect.manager.controller;
 
-import api.proyect.manager.models.ErrorResponse;
+import api.proyect.manager.model.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

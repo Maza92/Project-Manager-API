@@ -1,6 +1,6 @@
-package api.proyect.manager.models;
+package api.proyect.manager.model.role;
 
-import api.proyect.manager.models.enums.RoleName;
+import api.proyect.manager.model.enums.RoleName;
 import jakarta.persistence.*;
 import lombok.Data;
 
