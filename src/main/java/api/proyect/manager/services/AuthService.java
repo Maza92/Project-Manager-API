@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -26,19 +27,28 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public User registerUser(UserRegisterDto userRegisterDto) {
-        User user = new User();
-        try {
-            user.setUsername(userRegisterDto.getUsername());
-            user.setEmail(userRegisterDto.getEmail());
-            user.setPassword(passwordEncoder.encode(userRegisterDto.getPassword()));
-            user.getRoles().add(roleRepository.findByName(RoleName.USER.toString()));
-            user.setCreateAt(new Date(System.currentTimeMillis()));
-            user.setUpdateAt(null);
-        } catch (NullPointerException ex) {
-            System.out.println("Rol no encontrado");
+        Role role = roleRepository.findByName(RoleName.USER);
+        if (role == null) {
+            System.out.println("role not found");
         }
+
+        Set<Role> roles = new HashSet<>();
+        roles.add(role);
+
+        User user = User.builder()
+                .username(userRegisterDto.getUsername())
+                .email(userRegisterDto.getEmail())
+                .password(passwordEncoder.encode(userRegisterDto.getPassword()))
+                .roles(roles)
+                .createAt(new Date(System.currentTimeMillis()))
+                .updateAt(null)
+                .build();
+
         return userRepository.save(user);
     }
+
+
+
     public User authenticate(UserLoginDto userLoginDto) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
