@@ -7,7 +7,9 @@ import api.proyect.manager.models.technology.Technology;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Course {
@@ -18,14 +20,11 @@ public class Course {
     private String title;
     private String description;
     private BigDecimal price;
-
     private String videoPreview;
-
     private String teacherName;
 
     @Enumerated(EnumType.STRING)
     private Level level;
-
     private String category;
 
     @OneToMany(mappedBy = "course")
@@ -34,7 +33,12 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private List<Enrollment> enrollments;
 
+    @ManyToMany
+    @JoinTable(
+            name = "course_technology",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "technology_id")
+    )
+    private Set<Technology> technologies = new HashSet<>();
 
-    @OneToMany(mappedBy = "course")
-    private List<Technology> stack;
 }
