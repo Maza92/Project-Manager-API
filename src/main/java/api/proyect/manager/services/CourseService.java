@@ -19,6 +19,7 @@ public class CourseService {
     }
 
     public Course getCourseByTitle(String title) {
-        return courseRepository.findByTitleIgnoreCase(title);
+        String formattedTitle = title.replaceAll("-", " ");
+        return courseRepository.findByTitleIgnoreCase(formattedTitle);
     }
 }
