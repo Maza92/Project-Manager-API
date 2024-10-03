@@ -18,5 +18,7 @@ public class CourseService {
         return courseRepository.findAll();
     }
 
-    public Course getCourseByTitle(String title) { return courseRepository.findByTitle(title); }
+    public Course getCourseByTitle(String title) {
+        return courseRepository.findByTitleIgnoreCase(title);
+    }
 }
