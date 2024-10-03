@@ -17,4 +17,6 @@ public class CourseService {
     public List<Course> getAllCourses() {
         return courseRepository.findAll();
     }
+
+    public Course getCourseByTitle(String title) { return courseRepository.findByTitle(title); }
 }

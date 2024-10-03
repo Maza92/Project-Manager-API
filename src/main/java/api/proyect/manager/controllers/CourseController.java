@@ -3,9 +3,7 @@ package api.proyect.manager.controllers;
 import api.proyect.manager.models.course.Course;
 import api.proyect.manager.services.CourseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +17,10 @@ public class CourseController {
     @GetMapping("/courses")
     public List<Course> getAllCourses() {
         return courseService.getAllCourses();
+    }
+
+    @GetMapping("/course")
+    public Course getCourseById(@RequestParam String title) {
+        return courseService.getCourseByTitle(title);
     }
 }
