@@ -40,8 +40,6 @@ public class AuthService {
                 .email(userRegisterDto.getEmail())
                 .password(passwordEncoder.encode(userRegisterDto.getPassword()))
                 .roles(roles)
-                .createAt(new Date(System.currentTimeMillis()))
-                .updateAt(null)
                 .build();
 
         return userRepository.save(user);

@@ -3,12 +3,14 @@ package api.proyect.manager.models.user;
 import api.proyect.manager.models.Role;
 import api.proyect.manager.models.enums.RoleName;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Data
@@ -21,15 +23,24 @@ public class User implements UserDetails {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @NotNull
+  @Column(nullable = false)
   private Long id;
 
+  @Email
+  @Max(value = 70)
+  @NotNull
   @Column(nullable = false, unique = true)
   private String email;
 
+  @NotNull
   @Column(nullable = false)
   private String password;
 
-  @Column(nullable = false)
+  @NotNull
+  @Max(value = 30)
+  @Min(value = 8)
+  @Column(nullable = false, unique = true)
   private String username;
 
   @ManyToMany
@@ -40,11 +51,13 @@ public class User implements UserDetails {
   )
   private Set<Role> roles;
 
-  @CreationTimestamp
-  private Date createAt;
+  @Column(nullable = false, name = "created_at")
+  private LocalDateTime createAt;
 
-  @CreationTimestamp
-  private Date updateAt;
+  @PrePersist
+  protected void onCreate() {
+    createAt = LocalDateTime.now();
+  }
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {

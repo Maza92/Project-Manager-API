@@ -14,13 +14,10 @@ import java.util.List;
 @RequestMapping("/api")
 public class CourseController {
 
-    CourseService courseService;
+    private final CourseService courseService;
 
-    @RequestMapping
     @GetMapping("/courses")
     public List<Course> getAllCourses() {
         return courseService.getAllCourses();
     }
-
-
 }

@@ -11,7 +11,8 @@ import java.util.List;
 @Service
 public class CourseService {
 
-    CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
+
 
     public List<Course> getAllCourses() {
         return courseRepository.findAll();

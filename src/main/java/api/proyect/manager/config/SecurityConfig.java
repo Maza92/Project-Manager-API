@@ -38,9 +38,9 @@ public class SecurityConfig {
   public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
     return httpSecurity
             .csrf(AbstractHttpConfigurer::disable)
-            .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)) // Deshabilitar frameOptions
+            .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
             .authorizeHttpRequests(authorizeRequests ->
-                    authorizeRequests.requestMatchers("/api/auth/**", "/api/health", "/h2-console/**")
+                    authorizeRequests.requestMatchers("**")
                             .permitAll()
                             .anyRequest()
                             .authenticated()
